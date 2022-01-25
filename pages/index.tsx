@@ -19,7 +19,7 @@ export default function Home() {
         <ProfileCard>
           <Auth>
             <h2>Boas vindas!</h2>
-            <p>Code Cord 💜🚀</p>
+            <p>Star Wars Cord 💥🚀</p>
             <section>
               <input 
                 type="text" 
