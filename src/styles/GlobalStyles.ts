@@ -23,11 +23,11 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
 
-    background: url('https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg');
+    background: url('https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-size: auto;
+    background-size: cover;
   }
 
   h1, h2, h3, h4, h5, h6, strong {
