@@ -7,10 +7,11 @@ export const Main = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
 `;
 
 export const ProfileCard = styled.div`
-  background: #212931;
+  background: rgba(33, 41, 49, 1);
   box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.2);
   border-radius: 5px;
   padding: 2rem;
@@ -67,18 +68,19 @@ export const Auth = styled.div`
     }
 
     button {
-      background: #7768df;
+      background: #d8f500;
       border: none;
       border-radius: 4px;
       padding: 10px 0;
       
-      color: #ffffff;
+      color: #141414;
       font-size: 14px;
+      font-weight: 700;
 
       transition: filter 0.2s;
 
       &:hover {
-        filter: brightness(0.8);
+        filter: brightness(0.9);
       }
     }
   }
