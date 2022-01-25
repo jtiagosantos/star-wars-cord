@@ -1,5 +1,5 @@
 {
-  "name": "code-cord",
+  "name": "star-wars-cord",
   "private": true,
   "scripts": {
     "dev": "next dev",
