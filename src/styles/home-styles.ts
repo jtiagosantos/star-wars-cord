@@ -72,7 +72,7 @@ export const Auth = styled.div`
       border-radius: 4px;
       padding: 10px 0;
       
-      font-size: 14px;
+      font-size: 0.875rem;
       font-weight: 700;
 
       transition: filter 0.2s;
