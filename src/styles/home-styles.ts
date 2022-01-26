@@ -68,12 +68,10 @@ export const Auth = styled.div`
     }
 
     button {
-      background: #d8f500;
       border: none;
       border-radius: 4px;
       padding: 10px 0;
       
-      color: #141414;
       font-size: 14px;
       font-weight: 700;
 
@@ -81,6 +79,16 @@ export const Auth = styled.div`
 
       &:hover {
         filter: brightness(0.9);
+      }
+
+      &.search_button {
+        background: #d8f500;
+        color: #141414;
+      }
+
+      &.enter_button {
+        background: #3F9142;
+        color: #ffffff;
       }
     }
   }

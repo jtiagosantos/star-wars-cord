@@ -1,11 +1,24 @@
 import Head from 'next/head';
 import { useState } from 'react';
 import { GlobalStyles } from '../src/styles/GlobalStyles';
+import { 
+  getGithubUserImageUrlService 
+} from '../src/styles/services/get-github-user-image-url';
 
 import { Main, ProfileCard, Auth, PhotoProfile } from '../src/styles/home-styles';
 
 export default function Home() {
-  const [username, setUsername] = useState('jtiagosantos');
+  const [userImageUrl, setUserImageUrl] = useState('');
+  const [username, setUsername] = useState('');
+
+  function handleSearchUser() {
+    try {
+      const response = getGithubUserImageUrlService(username);
+      setUserImageUrl(response);
+    } catch(error: any) {
+      alert(error.message)
+    }
+  }
 
   return (
     <>
@@ -26,15 +39,28 @@ export default function Home() {
                 placeholder="seu usuário do Github" 
                 value={username}
                 onChange={({ target }) => setUsername(target.value)}
+                readOnly={userImageUrl ? true : false}
               />
-              <button type="button">Entrar</button>
+              {userImageUrl ? (
+                <button className='enter_button'>Entrar</button>
+              ) : (
+                <button 
+                  type="button" 
+                  onClick={handleSearchUser}
+                  className='search_button'
+                >
+                  Buscar usuário
+                </button>
+              )}
             </section>
           </Auth>
 
-          <PhotoProfile>
-            <img src={`https://github.com/${username}.png`} />
-            <p>jtiagosantos</p>
-          </PhotoProfile>
+          {userImageUrl && (
+            <PhotoProfile>
+              <img src={userImageUrl} alt={username} />
+              <p>jtiagosantos</p>
+            </PhotoProfile>
+          )}
         </ProfileCard>
       </Main>
     </>
