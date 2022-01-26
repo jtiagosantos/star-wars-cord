@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router'
 import { useState } from 'react';
-import { GlobalStyles } from '../src/styles/GlobalStyles';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useCustomToast } from '../src/hooks/useCustomToast';
 import { 
   getGithubUserImageUrlService 
 } from '../src/services/get-github-user-image-url';
@@ -13,13 +15,15 @@ export default function Home() {
   const [username, setUsername] = useState('');
 
   const router = useRouter();
+  const { errorToast, successToast } = useCustomToast();
 
   function handleSearchUser() {
     try {
       const response = getGithubUserImageUrlService(username);
       setUserImageUrl(response);
+      successToast('Usuário encontrado.')
     } catch(error: any) {
-      alert(error.message)
+      errorToast(error.message);
     }
   }
 
@@ -27,6 +31,8 @@ export default function Home() {
 
   return (
     <>
+      <ToastContainer />
+
       <Head>
         <title>Star Wars Cord</title>
       </Head>
