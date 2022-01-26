@@ -1,4 +1,4 @@
-export function getGithubUserImageUrlService(username: string) {
+export async function getGithubUserImageUrlService(username: string) {
   if (!username) {
     throw new Error('Campo usuário é obrigatório.')
   }
@@ -8,6 +8,13 @@ export function getGithubUserImageUrlService(username: string) {
   }
 
   try {
+    const response = await fetch(`https://api.github.com/users/${username}`);
+    const data = await response.json();
+
+    if (data.message) {
+      throw new Error('Usuário inválido.');
+    }
+
     const userImageUrl = `https://github.com/${username}.png`;
 
     return userImageUrl;

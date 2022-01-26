@@ -17,9 +17,9 @@ export default function Home() {
   const router = useRouter();
   const { errorToast, successToast } = useCustomToast();
 
-  function handleSearchUser() {
+  async function handleSearchUser() {
     try {
-      const response = getGithubUserImageUrlService(username);
+      const response = await getGithubUserImageUrlService(username);
       setUserImageUrl(response);
       successToast('Usuário encontrado.')
     } catch(error: any) {
