@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { GlobalStyles } from '../src/styles/GlobalStyles';
 import { 
   getGithubUserImageUrlService 
-} from '../src/styles/services/get-github-user-image-url';
+} from '../src/services/get-github-user-image-url';
 
 import { Main, ProfileCard, Auth, PhotoProfile } from '../src/styles/home-styles';
 
