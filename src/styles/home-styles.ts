@@ -12,7 +12,7 @@ export const Main = styled.main`
 
 export const ProfileCard = styled.div`
   background: rgba(33, 41, 49, 0.9);
-  box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 2px 10px #d8f500;
   border-radius: 5px;
   padding: 2rem;
 
