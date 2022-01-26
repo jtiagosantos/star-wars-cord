@@ -6,30 +6,35 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useMutation } from 'react-query';
 import { useCustomToast } from '../src/hooks/useCustomToast';
 import { 
-  getGithubUserImageUrlService 
-} from '../src/services/get-github-user-image-url';
+  getGithubUserService, 
+  GithubUser,
+} from '../src/services/get-github-user';
+import { useGithubUser } from '../src/hooks/useGithubUser';
 
 import { Main, ProfileCard, Auth, PhotoProfile } from '../src/styles/home-styles';
 
 export default function Home() {
-  const [userImageUrl, setUserImageUrl] = useState('');
-  const [username, setUsername] = useState('');
+  const [userInput, setUserInput] = useState('');
 
   const router = useRouter();
   const { errorToast, successToast } = useCustomToast();
+  const { setId, setUsername, userImageUrl, setUserImageUrl } = useGithubUser();
 
   const { 
     isLoading, 
     mutate,
-  } = useMutation(getGithubUserImageUrlService, {
-    onSuccess: (url: string) => {
-      setUserImageUrl(url);
-      successToast('Usuário encontrado.')
+  } = useMutation<GithubUser, unknown, string, unknown>(getGithubUserService, {
+    onSuccess: (user) => {
+      setId(user.id);
+      setUsername(userInput)
+      setUserImageUrl(user.userImageUrl);
+      
+      successToast('Usuário encontrado.');
     },
     onError: (error: any) => errorToast(error.message),
   })
 
-  const handleSearchUser = () => mutate(username);
+  const handleSearchUser = () => mutate(userInput);
 
   const navigateToChatPage = () => router.push('/chat');
 
@@ -50,8 +55,8 @@ export default function Home() {
               <input 
                 type="text" 
                 placeholder="seu usuário do Github" 
-                value={username}
-                onChange={({ target }) => setUsername(target.value)}
+                value={userInput}
+                onChange={({ target }) => setUserInput(target.value)}
                 readOnly={userImageUrl ? true : false}
               />
               {userImageUrl ? (
@@ -76,7 +81,7 @@ export default function Home() {
 
           {userImageUrl && (
             <PhotoProfile>
-              <img src={userImageUrl} alt={username} />
+              <img src={userImageUrl} alt={userInput} />
               <p>jtiagosantos</p>
             </PhotoProfile>
           )}

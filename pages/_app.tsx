@@ -1,5 +1,6 @@
-import type { AppProps } from 'next/app'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import type { AppProps } from 'next/app';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { GithubUserProvider } from '../src/contexts/GithubUserContext';
 
 import { GlobalStyles } from '../src/styles/GlobalStyles';
 
@@ -7,10 +8,12 @@ const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <GlobalStyles />
-      <Component {...pageProps} />
-    </QueryClientProvider>
+    <GithubUserProvider>
+      <QueryClientProvider client={queryClient}>
+        <GlobalStyles />
+        <Component {...pageProps} />
+      </QueryClientProvider>
+    </GithubUserProvider>
   ); 
 }
 
