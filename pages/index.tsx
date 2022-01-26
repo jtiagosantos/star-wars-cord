@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useMutation } from 'react-query';
 import { useCustomToast } from '../src/hooks/useCustomToast';
 import { 
   getGithubUserImageUrlService 
@@ -17,15 +18,18 @@ export default function Home() {
   const router = useRouter();
   const { errorToast, successToast } = useCustomToast();
 
-  async function handleSearchUser() {
-    try {
-      const response = await getGithubUserImageUrlService(username);
-      setUserImageUrl(response);
+  const { 
+    isLoading, 
+    mutate,
+  } = useMutation(getGithubUserImageUrlService, {
+    onSuccess: (url: string) => {
+      setUserImageUrl(url);
       successToast('Usuário encontrado.')
-    } catch(error: any) {
-      errorToast(error.message);
-    }
-  }
+    },
+    onError: (error: any) => errorToast(error.message),
+  })
+
+  const handleSearchUser = () => mutate(username);
 
   const navigateToChatPage = () => router.push('/chat');
 
@@ -62,8 +66,9 @@ export default function Home() {
                   type="button" 
                   onClick={handleSearchUser}
                   className='search_button'
+                  disabled={isLoading}
                 >
-                  Buscar usuário
+                  {isLoading ? 'Buscando usuário...' : 'Buscar usuário'}
                 </button>
               )}
             </section>

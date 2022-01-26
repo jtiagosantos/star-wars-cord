@@ -84,6 +84,10 @@ export const Auth = styled.div`
       &.search_button {
         background: #d8f500;
         color: #141414;
+
+        &:disabled {
+          cursor: not-allowed;
+        }
       }
 
       &.enter_button {
