@@ -12,7 +12,7 @@ export default function Home() {
       <GlobalStyles />
 
       <Head>
-        <title>Code Cord</title>
+        <title>Star Wars Cord</title>
       </Head>
 
       <Main>
