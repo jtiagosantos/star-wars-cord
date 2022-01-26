@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router'
 import { useState } from 'react';
 import { GlobalStyles } from '../src/styles/GlobalStyles';
 import { 
@@ -11,6 +12,8 @@ export default function Home() {
   const [userImageUrl, setUserImageUrl] = useState('');
   const [username, setUsername] = useState('');
 
+  const router = useRouter();
+
   function handleSearchUser() {
     try {
       const response = getGithubUserImageUrlService(username);
@@ -20,10 +23,10 @@ export default function Home() {
     }
   }
 
+  const navigateToChatPage = () => router.push('/chat');
+
   return (
     <>
-      <GlobalStyles />
-
       <Head>
         <title>Star Wars Cord</title>
       </Head>
@@ -42,7 +45,12 @@ export default function Home() {
                 readOnly={userImageUrl ? true : false}
               />
               {userImageUrl ? (
-                <button className='enter_button'>Entrar</button>
+                <button 
+                  className='enter_button'
+                  onClick={navigateToChatPage}
+                >
+                  Entrar
+                </button>
               ) : (
                 <button 
                   type="button" 
