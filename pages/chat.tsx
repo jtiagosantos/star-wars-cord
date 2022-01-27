@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react';
+import { useRouter } from 'next/router';
 import { IoMdSend } from 'react-icons/io';
 import { v4 as uuidv4 } from 'uuid';
 import { Message } from '../src/components/Message/Message';
@@ -27,7 +28,9 @@ export default function ChatPage() {
   const [messageList, setMessageList] = useState<Message[]>([]);
 
   const { errorToast } = useCustomToast();
-  const { username, userImageUrl } = useGithubUser();
+  const { username, userImageUrl, setUsername, setUserImageUrl } = useGithubUser();
+
+  const router = useRouter();
 
   function onSubmitSendMessage(event: FormEvent) {
     event.preventDefault();
@@ -56,6 +59,13 @@ export default function ChatPage() {
     setMessageList([...newMessageList]);
   }
 
+  function handleLogout() {
+    setUsername('');
+    setUserImageUrl('');
+
+    router.push('/');
+  }
+
   return (
     <>
       <ToastContainer />
@@ -64,7 +74,7 @@ export default function ChatPage() {
         <ChatWrapper>
           <Header>
             <p>Chat</p>
-            <p>Logout</p>
+            <p onClick={handleLogout}>Logout</p>
           </Header>
 
           <Chat>
