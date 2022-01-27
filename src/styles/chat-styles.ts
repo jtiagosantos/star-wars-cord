@@ -53,10 +53,29 @@ export const Chat = styled.div`
   border-radius: 5px;
   padding: 17px 21px;
 
+  overflow-y: auto;
+
   div {
     & + div {
-      margin-top: 20px;
+      margin-top: 18px;
     }
+  }
+
+  ::-webkit-scrollbar {
+      width: 5px;
+    }
+    
+  ::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 5px;
+  }
+
+  @media(max-height: 670px) {
+    max-height: 384px;
+  }
+
+  @media(min-height: 671px) {
+    max-height: 445px;
   }
 `;
 
