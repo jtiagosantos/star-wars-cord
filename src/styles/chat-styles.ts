@@ -42,6 +42,10 @@ export const Header = styled.div`
 
     &:last-child {
       cursor: pointer;
+
+      &:hover {
+        font-weight: 700;
+      }
     }
   }
 `;
