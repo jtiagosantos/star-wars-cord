@@ -1,5 +1,4 @@
 export interface GithubUser {
-  id: number;
   userImageUrl: string;
 }
 
@@ -21,7 +20,6 @@ export async function getGithubUserService(username: string) {
     }
 
     const githubUser: GithubUser = {
-      id: data.id,
       userImageUrl: `https://github.com/${username}.png`,
     }
 
