@@ -1,8 +1,6 @@
 import { useState, createContext, ReactNode, Dispatch, SetStateAction } from 'react';
 
 interface GithubUserFromContext {
-  id: number;
-  setId: Dispatch<SetStateAction<number>>;
   username: string;
   setUsername: Dispatch<SetStateAction<string>>;
   userImageUrl: string;
@@ -22,8 +20,6 @@ export function GithubUserProvider({ children }: GithubUserProviderProps) {
 
   return (
     <GithubUserContext.Provider value={{ 
-      id, 
-      setId,
       username, 
       setUsername,
       userImageUrl,
