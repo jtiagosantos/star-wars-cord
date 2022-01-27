@@ -52,6 +52,12 @@ export const Chat = styled.div`
   background: rgb(33, 41, 49, 0.9);
   border-radius: 5px;
   padding: 17px 21px;
+
+  div {
+    & + div {
+      margin-top: 20px;
+    }
+  }
 `;
 
 export const Footer = styled.form`

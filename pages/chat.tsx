@@ -1,5 +1,12 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { IoMdSend } from 'react-icons/io';
+import { v4 as uuidv4 } from 'uuid';
+import { Message } from '../src/components/Message/Message';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useCustomToast } from '../src/hooks/useCustomToast';
+import { useGithubUser } from '../src/hooks/useGithubUser';
+
 import { 
   ChatPageContainer, 
   ChatWrapper, 
@@ -8,31 +15,74 @@ import {
   Footer 
 } from "../src/styles/chat-styles";
 
+interface Message {
+  id: string;
+  username: string;
+  userImageUrl: string;
+  message: string;
+}
+
 export default function ChatPage() {
-  const [message, setMessage] = useState('');
+  const [messageInput, setMessageInput] = useState('');
+  const [messageList, setMessageList] = useState<Message[]>([]);
+
+  const { errorToast } = useCustomToast();
+  const { username, userImageUrl } = useGithubUser();
+
+  function onSubmitSendMessage(event: FormEvent) {
+    event.preventDefault();
+
+    if (!messageInput) {
+      errorToast('Campo mensagem é obrigatório.');
+
+      return
+    }
+
+    const formattedMessage: Message = {
+      id: uuidv4(),
+      username,
+      userImageUrl,
+      message: messageInput,
+    }
+
+    setMessageList([...messageList, formattedMessage]);
+
+    setMessageInput('');
+  }
 
   return (
-    <ChatPageContainer>
-      <ChatWrapper>
-        <Header>
-          <p>Chat</p>
-          <p>Logout</p>
-        </Header>
+    <>
+      <ToastContainer />
 
-        <Chat>
-          
-        </Chat>
+      <ChatPageContainer>
+        <ChatWrapper>
+          <Header>
+            <p>Chat</p>
+            <p>Logout</p>
+          </Header>
 
-        <Footer>
-          <input 
-            type="text" 
-            placeholder="Insira sua mensagem aqui" 
-            value={message}
-            onChange={({ target }) => setMessage(target.value)}
-          />
-          <button type="button">{<IoMdSend />}</button>
-        </Footer>
-      </ChatWrapper>
-    </ChatPageContainer>
+          <Chat>
+            {messageList.map((message) => (
+              <Message 
+                key={message.id}
+                username={username}
+                message={message.message}
+                userImageUrl={userImageUrl}
+              />
+            ))}
+          </Chat>
+
+          <Footer onSubmit={onSubmitSendMessage}>
+            <input 
+              type="text" 
+              placeholder="Insira sua mensagem aqui" 
+              value={messageInput}
+              onChange={({ target }) => setMessageInput(target.value)}
+            />
+            <button type="submit">{<IoMdSend />}</button>
+          </Footer>
+        </ChatWrapper>
+      </ChatPageContainer>
+    </>
   );
 }
