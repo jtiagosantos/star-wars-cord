@@ -20,7 +20,9 @@ export function Message({
         <MessageInfo>
           <img src={userImageUrl} alt={username} />
           <p className='username'>{username}</p>
-          <p className='date'>{new Date().toLocaleDateString()}</p>
+          <p className='date'>
+            {new Intl.DateTimeFormat('pt-BR').format(new Date())}
+          </p>
         </MessageInfo>
         <p className='message_text'>{message}</p>
       </div>
