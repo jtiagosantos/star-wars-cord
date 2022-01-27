@@ -48,7 +48,7 @@ export default function ChatPage() {
       message: messageInput,
     }
 
-    setMessageList([...messageList, formattedMessage]);
+    setMessageList([formattedMessage, ...messageList]);
 
     setMessageInput('');
   }

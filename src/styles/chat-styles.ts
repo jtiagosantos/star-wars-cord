@@ -61,11 +61,18 @@ export const Chat = styled.div`
   border-radius: 5px;
   padding: 17px 21px;
 
+  display: flex;
+  flex-direction: column-reverse;
+
   overflow-y: auto;
 
   div {
-    & + div {
-      margin-top: 18px;
+    div + & {
+      margin-top: 6px;
+    }
+
+    &:last-child {
+      margin-top: -15px;
     }
   }
 
