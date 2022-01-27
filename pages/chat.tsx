@@ -50,6 +50,12 @@ export default function ChatPage() {
     setMessageInput('');
   }
 
+  function handleDeleteMessage(messageId: string) {
+    const newMessageList = messageList.filter(message => message.id !== messageId);
+
+    setMessageList([...newMessageList]);
+  }
+
   return (
     <>
       <ToastContainer />
@@ -68,6 +74,7 @@ export default function ChatPage() {
                 username={username}
                 message={message.message}
                 userImageUrl={userImageUrl}
+                deleteMessage={() => handleDeleteMessage(message.id)}
               />
             ))}
           </Chat>

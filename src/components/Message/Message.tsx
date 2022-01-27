@@ -5,9 +5,15 @@ export interface MessageProps {
   username: string;
   userImageUrl: string;
   message: string;
+  deleteMessage: () => void;
 }
 
-export function Message({ username, userImageUrl, message }: MessageProps) {
+export function Message({ 
+  username, 
+  userImageUrl, 
+  message, 
+  deleteMessage 
+}: MessageProps) {
   return (
     <MessageContainer>
       <div>
@@ -18,7 +24,7 @@ export function Message({ username, userImageUrl, message }: MessageProps) {
         </MessageInfo>
         <p className='message_text'>{message}</p>
       </div>
-      <RiDeleteBin2Fill />
+      <RiDeleteBin2Fill onClick={deleteMessage} />
     </MessageContainer>
   );
 }
