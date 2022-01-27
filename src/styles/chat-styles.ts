@@ -9,6 +9,10 @@ export const ChatPageContainer = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media(max-width: 870px) {
+    padding: 62px 0;
+  }
 `;
 
 export const ChatWrapper = styled.div`
