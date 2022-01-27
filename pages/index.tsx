@@ -18,14 +18,13 @@ export default function Home() {
 
   const router = useRouter();
   const { errorToast, successToast } = useCustomToast();
-  const { setId, setUsername, userImageUrl, setUserImageUrl } = useGithubUser();
+  const { setUsername, userImageUrl, setUserImageUrl } = useGithubUser();
 
   const { 
     isLoading, 
     mutate,
   } = useMutation<GithubUser, unknown, string, unknown>(getGithubUserService, {
     onSuccess: (user) => {
-      setId(user.id);
       setUsername(userInput)
       setUserImageUrl(user.userImageUrl);
       
