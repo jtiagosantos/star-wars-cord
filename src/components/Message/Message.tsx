@@ -1,7 +1,7 @@
 import { RiDeleteBin2Fill } from 'react-icons/ri'
 import { MessageContainer, MessageInfo } from "./styles";
 
-interface MessageProps {
+export interface MessageProps {
   username: string;
   userImageUrl: string;
   message: string;
