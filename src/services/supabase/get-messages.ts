@@ -1,12 +1,5 @@
 import { supabase } from './supabase-client';
-
-export interface Message {
-  id: string;
-  username: string;
-  user_image_url: string;
-  message: string;
-  created_at: Date;
-}
+import { Message } from '../../types/message';
 
 export async function getMessagesService() {
   const { data, error } = await supabase.from('messages').select('*');
