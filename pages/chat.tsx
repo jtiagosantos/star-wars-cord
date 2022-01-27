@@ -2,7 +2,6 @@ import { FormEvent, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useQuery, useMutation } from 'react-query';
 import { IoMdSend } from 'react-icons/io';
-import { v4 as uuidv4 } from 'uuid';
 import { Message } from '../src/components/Message/Message';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
