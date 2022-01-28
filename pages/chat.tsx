@@ -1,4 +1,5 @@
 import { FormEvent, useState, useEffect } from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useQuery, useMutation } from 'react-query';
 import { IoMdSend } from 'react-icons/io';
@@ -110,6 +111,10 @@ export default function ChatPage() {
   return (
     <>
       <ToastContainer />
+
+      <Head>
+        <title>Chat | Star Wars Cord</title>
+      </Head>
 
       <ChatPageContainer>
         <ChatWrapper>
