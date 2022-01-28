@@ -127,7 +127,7 @@ export const Footer = styled.form`
   }
 
   button {
-    width: 45px;
+    width: 46px;
     height: 43px;
     border-radius: 100%;
     border: none;
