@@ -16,6 +16,7 @@ import {
 import { useCustomToast } from '../src/hooks/useCustomToast';
 import { useGithubUser } from '../src/hooks/useGithubUser';
 import { Message as MessageType } from '../src/types/message';
+import { Button } from '../src/components/Button/Button';
 
 import {
   ChatPageContainer,
@@ -152,13 +153,16 @@ export default function ChatPage() {
             <StickersCard
               onSendStickerMessage={(stickerUrl) => sendMessage(stickerUrl)} 
             />
-            <button 
+            <Button 
+              backgroundColor='#3F9142'
+              colorSvg='#FFFFFF'
+              sizeSvg={1.7}
               type="submit" 
-              className={`button ${isLoadingSendMessage ? 'is_loading' : ''}`}
+              className={isLoadingSendMessage ? 'is_loading' : ''}
               disabled={isLoadingSendMessage}
             >
               {!isLoadingSendMessage && <IoMdSend />}
-            </button>
+            </Button>
           </Footer>
         </ChatWrapper>
       </ChatPageContainer>

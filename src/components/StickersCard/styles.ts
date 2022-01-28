@@ -2,20 +2,6 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
-
-  button {
-    width: 46px;
-    height: 43px;
-
-    &.button_open_stickers {
-      background: #9AA5B1;
-
-      svg {
-        color: #d8f500;
-        font-size: 1.5rem;
-      }
-    }
-  }
 `;
 
 export const StickersList = styled.div`

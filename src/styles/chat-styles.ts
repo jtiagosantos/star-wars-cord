@@ -127,25 +127,9 @@ export const Footer = styled.form`
   }
 
   button {
-    border-radius: 100%;
-    border: none;
-    background: #3F9142;
-
-    transition: filter 0.2s;
-
-    &:hover {
-      filter: brightness(0.8);
-    }
-
     &:disabled {
       cursor: not-allowed;
     }
-
-    svg {
-      color: #ffffff;
-      font-size: 1.7rem;
-    }
-
     
     &.is_loading {
       border: 2px solid #3F9142;
@@ -158,11 +142,6 @@ export const Footer = styled.form`
           transform: rotate(1turn);
         }
       }
-    }
-
-    &.button {
-      width: 47px;
-      height: 43px;
     }
   }
 `;
