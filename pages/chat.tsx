@@ -26,7 +26,7 @@ export default function ChatPage() {
 
   const router = useRouter();
 
-  const { errorToast } = useCustomToast();
+  const { errorToast, promiseToast } = useCustomToast();
   const { username, userImageUrl, setUsername, setUserImageUrl } = useGithubUser();
 
   const { isLoading, isError, error, data } = useQuery('messages', getMessagesService);
@@ -70,7 +70,7 @@ export default function ChatPage() {
     mutateSendMessage(message);
   }
 
-  const { mutate: mutateDeleteMessage } = useMutation(deleteMessageService, {
+  const { mutateAsync: mutateAsyncDeleteMessage } = useMutation(deleteMessageService, {
     onSuccess: (data) => {
       const newMessageList = messageList.filter(message => message.id !== data.id);
 
@@ -79,7 +79,13 @@ export default function ChatPage() {
     onError: (error) => console.log('Return error in delete message: ' + error),
   });
 
-  const handleDeleteMessage = (messageId: number) => mutateDeleteMessage(messageId);
+  function handleDeleteMessage(messageId: number) {
+    promiseToast(mutateAsyncDeleteMessage(messageId), {
+      messagePending: 'Deletando mensagem...',
+      messageSuccess: 'Mensagem deletada.',
+      messageError: 'Falha ao deletar mensagem.',
+    })
+  }
 
   function handleLogout() {
     setUsername('');
