@@ -107,6 +107,11 @@ export default function ChatPage() {
                 created_at={message.created_at}
               />
             ))}
+            {isLoading && (
+              <div className='loading_container'>
+                <img src="/assets/images/loading.gif" alt="loading" />
+              </div>
+            )}
           </Chat>
 
           <Footer onSubmit={onSubmitSendMessage}>
