@@ -9,6 +9,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getMessagesService } from '../src/services/supabase/get-messages';
 import { sendMessageService } from '../src/services/supabase/send-message';
 import { deleteMessageService } from '../src/services/supabase/delete-message';
+import { 
+  listenMessagesInRealTimeService 
+} from '../src/services/supabase/listen-messages-in-real-time';
 import { useCustomToast } from '../src/hooks/useCustomToast';
 import { useGithubUser } from '../src/hooks/useGithubUser';
 import { Message as MessageType } from '../src/types/message';
@@ -39,7 +42,9 @@ export default function ChatPage() {
       return;
     }
 
-    if (data) setMessageList(data);
+    if (data) {
+      setMessageList(data)
+    }
   }, [isError, error, data]);
 
   const { 
@@ -48,6 +53,7 @@ export default function ChatPage() {
   } = useMutation(sendMessageService, {
     onSuccess: (data) => {
       setMessageList([data, ...messageList]);
+      listenMessagesInRealTimeService(messageList, setMessageList);
       setMessageInput('');
     },
     onError: (error) => console.log('Return error in send message: ' + error),
@@ -80,6 +86,8 @@ export default function ChatPage() {
       const newMessageList = messageList.filter(message => message.id !== data.id);
 
       setMessageList([...newMessageList]);
+
+      listenMessagesInRealTimeService(newMessageList, setMessageList);
     },
     onError: (error) => console.log('Return error in delete message: ' + error),
   });
