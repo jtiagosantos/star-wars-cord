@@ -81,7 +81,7 @@ export default function Home() {
           {userImageUrl && (
             <PhotoProfile>
               <img src={userImageUrl} alt={userInput} />
-              <p>jtiagosantos</p>
+              <p>{userInput}</p>
             </PhotoProfile>
           )}
         </ProfileCard>
