@@ -107,7 +107,7 @@ export default function ChatPage() {
                 message={message.message}
                 userImageUrl={message.user_image_url}
                 deleteMessage={() => handleDeleteMessage(message.id)}
-                created_at={message.created_at}
+                createdAt={message.created_at}
               />
             ))}
             

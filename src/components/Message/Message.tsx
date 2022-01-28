@@ -6,7 +6,7 @@ export interface MessageProps {
   userImageUrl: string;
   message: string;
   deleteMessage: () => void;
-  created_at: Date;
+  createdAt: Date;
 }
 
 export function Message({ 
@@ -14,7 +14,7 @@ export function Message({
   userImageUrl, 
   message, 
   deleteMessage,
-  created_at,
+  createdAt,
 }: MessageProps) {
   return (
     <MessageContainer>
@@ -23,7 +23,7 @@ export function Message({
           <img src={userImageUrl} alt={username} />
           <p className='username'>{username}</p>
           <p className='date'>
-            {new Intl.DateTimeFormat('pt-BR').format(new Date(created_at))}
+            {new Intl.DateTimeFormat('pt-BR').format(new Date(createdAt))}
           </p>
         </MessageInfo>
         <p className='message_text'>{message}</p>
