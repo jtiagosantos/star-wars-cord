@@ -4,9 +4,12 @@ export const Container = styled.div`
   position: relative;
 
   button {
-    background: #9AA5B1;
-    width: 42px;
+    width: 46px;
     height: 43px;
+
+    &.button_open_stickers {
+      background: #9AA5B1;
+    }
   }
 `;
 

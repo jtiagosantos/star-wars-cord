@@ -111,7 +111,7 @@ export const Footer = styled.form`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
+  gap: 10px;
 
   margin-top: 23px;
 
@@ -127,8 +127,6 @@ export const Footer = styled.form`
   }
 
   button {
-    width: 46px;
-    height: 43px;
     border-radius: 100%;
     border: none;
     background: #3F9142;
@@ -160,6 +158,11 @@ export const Footer = styled.form`
           transform: rotate(1turn);
         }
       }
+    }
+
+    &.button {
+      width: 47px;
+      height: 43px;
     }
   }
 `;

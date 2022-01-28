@@ -150,7 +150,7 @@ export default function ChatPage() {
             />
             <button 
               type="submit" 
-              className={isLoadingSendMessage ? 'is_loading' : ''}
+              className={`button ${isLoadingSendMessage ? 'is_loading' : ''}`}
               disabled={isLoadingSendMessage}
             >
               {!isLoadingSendMessage && <IoMdSend />}

@@ -28,6 +28,7 @@ export function StickersCard({
       <button 
         type="button" 
         onClick={handleOpenAndCloseStickersCard}
+        className='button_open_stickers'
       >
         ⚡
       </button>
