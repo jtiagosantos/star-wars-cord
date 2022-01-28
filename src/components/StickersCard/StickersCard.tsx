@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FiZap } from 'react-icons/fi';
 import { stickers } from '../../constants/stickers';
 
 import { Container, StickersList } from './styles';
@@ -30,7 +31,7 @@ export function StickersCard({
         onClick={handleOpenAndCloseStickersCard}
         className='button_open_stickers'
       >
-        ⚡
+        <FiZap />
       </button>
 
       {isOpenStickersCard && (

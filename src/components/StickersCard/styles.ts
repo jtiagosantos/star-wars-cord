@@ -9,6 +9,11 @@ export const Container = styled.div`
 
     &.button_open_stickers {
       background: #9AA5B1;
+
+      svg {
+        color: #d8f500;
+        font-size: 1.5rem;
+      }
     }
   }
 `;
