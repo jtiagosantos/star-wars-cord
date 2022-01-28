@@ -41,7 +41,10 @@ export default function ChatPage() {
     if (data) setMessageList(data);
   }, [isError, error, data]);
 
-  const { mutate: mutateSendMessage } = useMutation(sendMessageService, {
+  const { 
+    mutate: mutateSendMessage,
+    isLoading: isLoadingSendMessage,
+  } = useMutation(sendMessageService, {
     onSuccess: (data) => {
       setMessageList([data, ...messageList]);
       setMessageInput('');
@@ -121,7 +124,12 @@ export default function ChatPage() {
               value={messageInput}
               onChange={({ target }) => setMessageInput(target.value)}
             />
-            <button type="submit">{<IoMdSend />}</button>
+            <button 
+              type="submit" 
+              className={isLoadingSendMessage ? 'is_loading' : ''}
+            >
+              {!isLoadingSendMessage && <IoMdSend />}
+            </button>
           </Footer>
         </ChatWrapper>
       </ChatPageContainer>
