@@ -127,7 +127,8 @@ export const Footer = styled.form`
   }
 
   button {
-    padding: 8px 10px;
+    width: 45px;
+    height: 43px;
     border-radius: 100%;
     border: none;
     background: #3F9142;
@@ -141,6 +142,20 @@ export const Footer = styled.form`
     svg {
       color: #ffffff;
       font-size: 1.7rem;
+    }
+
+    
+    &.is_loading {
+      border: 2px solid #3F9142;
+      border-top-color: #ffffff;
+
+      animation: is-loading 1s infinite;
+
+      @keyframes is-loading {
+        to {
+          transform: rotate(1turn);
+        }
+      }
     }
   }
 `;
