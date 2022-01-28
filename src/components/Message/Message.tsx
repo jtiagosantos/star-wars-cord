@@ -26,7 +26,13 @@ export function Message({
             {new Intl.DateTimeFormat('pt-BR').format(new Date(createdAt))}
           </p>
         </MessageInfo>
-        <p className='message_text'>{message}</p>
+        {message.startsWith(':sticker:') ? 
+          <img 
+            className='message_sticker' 
+            src={message.replace(':sticker:', '')} 
+          />
+          :
+          <p className='message_text'>{message}</p>}
       </div>
       <RiDeleteBin2Fill onClick={deleteMessage} />
     </MessageContainer>

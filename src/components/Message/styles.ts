@@ -23,6 +23,11 @@ export const MessageContainer = styled.div`
       color: #ffffff;
       font-size: 1rem;
     }
+
+    .message_sticker {
+      width: 100px;
+      height: 100px;
+    }
   }
 `;
 
