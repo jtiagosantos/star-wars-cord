@@ -139,6 +139,10 @@ export const Footer = styled.form`
       filter: brightness(0.8);
     }
 
+    &:disabled {
+      cursor: not-allowed;
+    }
+
     svg {
       color: #ffffff;
       font-size: 1.7rem;
