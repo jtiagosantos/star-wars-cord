@@ -14,7 +14,6 @@ interface GithubUserProviderProps {
 export const GithubUserContext = createContext({} as GithubUserFromContext);
 
 export function GithubUserProvider({ children }: GithubUserProviderProps) {
-  const [id, setId] = useState(0);
   const [username, setUsername] = useState('');
   const [userImageUrl, setUserImageUrl] = useState('');
 
