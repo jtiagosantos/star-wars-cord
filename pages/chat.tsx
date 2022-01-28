@@ -43,7 +43,7 @@ export default function ChatPage() {
 
   const { mutate: mutateSendMessage } = useMutation(sendMessageService, {
     onSuccess: (data) => {
-      setMessageList([data[0], ...messageList]);
+      setMessageList([data, ...messageList]);
       setMessageInput('');
     },
     onError: (error) => console.log('Return error in send message: ' + error),

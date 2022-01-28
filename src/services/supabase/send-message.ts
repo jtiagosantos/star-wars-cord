@@ -10,5 +10,7 @@ export async function sendMessageService(
     throw error;
   }
 
-  return data as unknown as Message[];
+  const response = data as unknown as Message[];
+
+  return response[0];
 }
