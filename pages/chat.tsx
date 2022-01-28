@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useQuery, useMutation } from 'react-query';
 import { IoMdSend } from 'react-icons/io';
 import { Message } from '../src/components/Message/Message';
+import { StickersCard } from '../src/components/StickersCard/StickersCard';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getMessagesService } from '../src/services/supabase/get-messages';
@@ -52,6 +53,16 @@ export default function ChatPage() {
     onError: (error) => console.log('Return error in send message: ' + error),
   });
 
+  function sendMessage(stickerUrl: string) {
+    const message = {
+      username,
+      user_image_url: userImageUrl,
+      message: stickerUrl ? `:sticker:${stickerUrl}` : messageInput,
+    }
+
+    mutateSendMessage(message);
+  }
+
   function onSubmitSendMessage(event: FormEvent) {
     event.preventDefault();
 
@@ -61,13 +72,7 @@ export default function ChatPage() {
       return
     }
 
-    const message = {
-      username,
-      user_image_url: userImageUrl,
-      message: messageInput,
-    }
-
-    mutateSendMessage(message);
+    sendMessage('');
   }
 
   const { mutateAsync: mutateAsyncDeleteMessage } = useMutation(deleteMessageService, {
@@ -130,6 +135,10 @@ export default function ChatPage() {
               placeholder="Insira sua mensagem aqui"
               value={messageInput}
               onChange={({ target }) => setMessageInput(target.value)}
+            />
+            <StickersCard
+              onSendStickerMessage={(stickerUrl) => sendMessage(stickerUrl)} 
+              isLoadingSendMessage={isLoadingSendMessage}
             />
             <button 
               type="submit" 
