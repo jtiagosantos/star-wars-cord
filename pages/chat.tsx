@@ -7,16 +7,17 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getMessagesService } from '../src/services/supabase/get-messages';
 import { sendMessageService } from '../src/services/supabase/send-message';
+import { deleteMessageService } from '../src/services/supabase/delete-message';
 import { useCustomToast } from '../src/hooks/useCustomToast';
 import { useGithubUser } from '../src/hooks/useGithubUser';
 import { Message as MessageType } from '../src/types/message';
 
-import { 
-  ChatPageContainer, 
-  ChatWrapper, 
-  Header, 
-  Chat, 
-  Footer 
+import {
+  ChatPageContainer,
+  ChatWrapper,
+  Header,
+  Chat,
+  Footer
 } from "../src/styles/chat-styles";
 
 export default function ChatPage() {
@@ -40,7 +41,7 @@ export default function ChatPage() {
     if (data) setMessageList(data);
   }, [isError, error, data]);
 
-  const { mutate } = useMutation(sendMessageService, {
+  const { mutate: mutateSendMessage } = useMutation(sendMessageService, {
     onSuccess: (data) => {
       setMessageList([data[0], ...messageList]);
       setMessageInput('');
@@ -63,14 +64,19 @@ export default function ChatPage() {
       message: messageInput,
     }
 
-    mutate(message);
+    mutateSendMessage(message);
   }
 
-  function handleDeleteMessage(messageId: number) {
-    const newMessageList = messageList.filter(message => message.id !== messageId);
+  const { mutate: mutateDeleteMessage } = useMutation(deleteMessageService, {
+    onSuccess: (data) => {
+      const newMessageList = messageList.filter(message => message.id !== data.id);
 
-    setMessageList([...newMessageList]);
-  }
+      setMessageList([...newMessageList]);
+    },
+    onError: (error) => console.log('Return error in delete message: ' + error),
+  });
+
+  const handleDeleteMessage = (messageId: number) => mutateDeleteMessage(messageId);
 
   function handleLogout() {
     setUsername('');
@@ -92,7 +98,7 @@ export default function ChatPage() {
 
           <Chat>
             {messageList.map((message) => (
-              <Message 
+              <Message
                 key={message.id}
                 username={message.username}
                 message={message.message}
@@ -104,9 +110,9 @@ export default function ChatPage() {
           </Chat>
 
           <Footer onSubmit={onSubmitSendMessage}>
-            <input 
-              type="text" 
-              placeholder="Insira sua mensagem aqui" 
+            <input
+              type="text"
+              placeholder="Insira sua mensagem aqui"
               value={messageInput}
               onChange={({ target }) => setMessageInput(target.value)}
             />
