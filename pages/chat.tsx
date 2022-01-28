@@ -151,7 +151,6 @@ export default function ChatPage() {
             />
             <StickersCard
               onSendStickerMessage={(stickerUrl) => sendMessage(stickerUrl)} 
-              isLoadingSendMessage={isLoadingSendMessage}
             />
             <button 
               type="submit" 

@@ -6,12 +6,10 @@ import { Container, StickersList } from './styles';
 
 interface StickersCardProps {
   onSendStickerMessage: (sticker: string) => void;
-  isLoadingSendMessage: boolean;
 }
 
 export function StickersCard({ 
   onSendStickerMessage,
-  isLoadingSendMessage,
 }: StickersCardProps) {
   const [isOpenStickersCard, setIsOpenStickersCard] = useState(false);
 
