@@ -36,6 +36,10 @@ export default function ChatPage() {
   const { errorToast, promiseToast } = useCustomToast();
   const { username, userImageUrl, setUsername, setUserImageUrl } = useGithubUser();
 
+  if (!username) {
+    errorToast('Obrigatório fazer autenticação.');
+  }
+
   const { isLoading, isError, error, data } = useQuery('messages', getMessagesService);
 
   useEffect(() => {
@@ -45,9 +49,7 @@ export default function ChatPage() {
       return;
     }
 
-    if (data) {
-      setMessageList(data)
-    }
+    if (data) setMessageList(data)
   }, [isError, error, data]);
 
   const { 
