@@ -45,9 +45,7 @@ export default function ChatPage() {
       return;
     }
 
-    if (data) {
-      setMessageList(data)
-    }
+    if (data) setMessageList(data)
   }, [isError, error, data]);
 
   const { 
