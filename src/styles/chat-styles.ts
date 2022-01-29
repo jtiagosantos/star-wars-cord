@@ -47,6 +47,14 @@ export const Header = styled.div`
     &:last-child {
       cursor: pointer;
 
+      display: flex;
+      align-items: center;
+      gap: 7px;
+
+      svg {
+        font-size: 1.1rem;
+      }
+
       &:hover {
         font-weight: 700;
       }

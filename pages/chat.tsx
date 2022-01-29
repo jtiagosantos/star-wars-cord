@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useQuery, useMutation } from 'react-query';
 import { IoMdSend } from 'react-icons/io';
+import { HiOutlineLogout } from 'react-icons/hi';
 import { Message } from '../src/components/Message/Message';
 import { StickersCard } from '../src/components/StickersCard/StickersCard';
 import { ToastContainer } from 'react-toastify';
@@ -114,14 +115,14 @@ export default function ChatPage() {
       <ToastContainer />
 
       <Head>
-        <title>Chat | Star Wars Cord</title>
+        <title>Bate-papo | Star Wars Cord</title>
       </Head>
 
       <ChatPageContainer>
         <ChatWrapper>
           <Header>
-            <p>Chat</p>
-            <p onClick={handleLogout}>Logout</p>
+            <p>Bate-papo</p>
+            <p onClick={handleLogout}>Sair <HiOutlineLogout /></p>
           </Header>
 
           <Chat>
