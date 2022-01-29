@@ -8,7 +8,6 @@ export function listenMessagesInRealTimeService(
 ) {
   return supabase.from('messages').on('*', (data) => {
     if (data.eventType === 'INSERT') {
-
       setMessageList(() => {
         return [
           data.new,
@@ -20,7 +19,6 @@ export function listenMessagesInRealTimeService(
     }
 
     if (data.eventType === 'DELETE') {
-
       setMessageList(() => {
         return [
           ...messageList,
