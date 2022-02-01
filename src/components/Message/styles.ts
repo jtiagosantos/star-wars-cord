@@ -23,6 +23,8 @@ export const MessageContainer = styled.div`
       color: #ffffff;
       font-size: 1rem;
       margin-top: 10px;
+      padding-right: 15px;
+      word-break: break-all;
     }
 
     .message_sticker {
