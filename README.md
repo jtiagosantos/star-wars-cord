@@ -1,34 +1,111 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">Star Wars Cord</h1>
 
-## Getting Started
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/jtiagosantos/star-wars-cord?color=%green">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/jtiagosantos/star-wars-cord?color=blue">
+  <a href="https://github.com/jtiagosantos/star-wars-cord/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jtiagosantos/star-wars-cord?color=purple">
+  </a>
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen?color=orange">
+   <a href="https://github.com/jtiagosantos/star-wars-cord/stargazers">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/jtiagosantos/star-wars-cord?style=social">
+  </a>
+</p>
 
-First, run the development server:
+<h4 align="center">
+	🚧  Star Wars Cord 💥 Completed 🚀 🚧
+</h4>
+
+<p align="center">
+  <a href="#-features">Features</a> •
+  <a href="#-run-project">Run Project</a> •
+  <a href="#-technologies">Technologies</a> •
+  <a href="#-deploy">Deploy</a> •
+  <a href="#-author">Author</a> •
+  <a href="#-license">License</a>
+</p>
+
+<br>
+
+<h1 align="center">
+    <img alt="star wars cord" src=".github/cover-1.png" />
+</h1>
+
+<h1 align="center">
+    <img alt="star wars cord" src=".github/cover-2.png" />
+</h1>
+
+<hr />
+
+## ⚙️ Features
+
+- [x] Authentication with Github username
+- [x] Send messages tex
+- [x] Send messages gif
+- [x] Receive messages
+- [x] Delete the message itself 
+
+<hr>
+
+## 🚀 Run Project
+
+1️⃣ Clone project and access its folder:
 
 ```bash
-npm run dev
-# or
-yarn dev
+$ git clone https://github.com/jtiagosantos/star-wars-cord.git
+$ cd star-wars-cord
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2️⃣ Install dependencies:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+$ yarn ou npm i
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+3️⃣ Add environment variables:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+#Supabase
+NEXT_PUBLIC_SUPABASE_URL=xxxxxxxxxxxxxxxxxxxxxxxxxx
+NEXT_PUBLIC_SUPABASE_ANON_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxx
+```
 
-## Learn More
+4️⃣ Start project:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+$ yarn dev ou npm run dev
+```
+<hr>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠 Technologies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The following tools were used in the construction of project:
 
-## Deploy on Vercel
+- **[Next.js](https://nextjs.org/)**
+- **[Typescript](https://www.typescriptlang.org/)**
+- **[Supabase](https://supabase.com/)**
+- **[React Query](https://react-query.tanstack.com/)**
+- **[Styled Components](https://styled-components.com/)**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<hr>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## :cloud: Deploy
+
+- **[Star Wars Cord](https://star-wars-cord-git-main-jtiagosantos.vercel.app/)**
+
+<hr>
+
+## 👨‍💻 Author
+
+<img src="https://avatars.githubusercontent.com/u/63312141?v=4" width="100" alt="Tiago Santos" style="border-radius: 50px;" />
+
+<strong><a href="https://github.com/jtiagosantos">Tiago Santos </a>🚀</strong>
+
+[![Linkedin Badge](https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/jos%C3%A9-tiago-santos-de-lima-aaa4361a4/)](https://www.linkedin.com/in/josetiagosantosdelima/)
+[![Gmail Badge](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:tiago.santos@icomp.ufam.edu.br)
+
+<hr>
+
+## 📝 License
+
+This project is under license [MIT](./LICENSE).
