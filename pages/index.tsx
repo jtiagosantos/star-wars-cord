@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router'
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useMutation } from 'react-query';
@@ -33,7 +33,10 @@ export default function Home() {
     onError: (error: any) => errorToast(error.message),
   })
 
-  const handleSearchUser = () => mutate(userInput);
+  function onSubmitSearchUser(event: FormEvent) {
+    event.preventDefault();
+    mutate(userInput)
+  } 
 
   const navigateToChatPage = () => router.push('/chat');
 
@@ -51,30 +54,31 @@ export default function Home() {
             <h2>Boas vindas!</h2>
             <p>Star Wars Cord 💥🚀</p>
             <section>
-              <input 
-                type="text" 
-                placeholder="seu usuário do Github" 
-                value={userInput}
-                onChange={({ target }) => setUserInput(target.value)}
-                readOnly={userImageUrl ? true : false}
-              />
-              {userImageUrl ? (
-                <button 
-                  className='enter_button'
-                  onClick={navigateToChatPage}
-                >
-                  Entrar
-                </button>
-              ) : (
-                <button 
-                  type="button" 
-                  onClick={handleSearchUser}
-                  className='search_button'
-                  disabled={isLoading}
-                >
-                  {isLoading ? 'Buscando usuário...' : 'Buscar usuário'}
-                </button>
-              )}
+              <form onSubmit={onSubmitSearchUser}>
+                <input 
+                  type="text" 
+                  placeholder="seu usuário do Github" 
+                  value={userInput}
+                  onChange={({ target }) => setUserInput(target.value)}
+                  readOnly={userImageUrl ? true : false}
+                />
+                {userImageUrl ? (
+                  <button 
+                    className='enter_button'
+                    onClick={navigateToChatPage}
+                  >
+                    Entrar
+                  </button>
+                ) : (
+                  <button 
+                    type="submit"
+                    className='search_button'
+                    disabled={isLoading}
+                  >
+                    {isLoading ? 'Buscando usuário...' : 'Buscar usuário'}
+                  </button>
+                )}
+              </form>
             </section>
           </Auth>
 
