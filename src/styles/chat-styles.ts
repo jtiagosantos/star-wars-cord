@@ -39,12 +39,20 @@ export const Header = styled.div`
   p {
     color: #CBD2D9;
     font-size: 0.875rem;
+    font-weight: 700;
+  }
 
-    &:first-child {
-      font-weight: 700;
+  div {
+    display: flex;
+    gap: 10px;
+
+    img {
+      width: 25px;
+      border-radius: 15px;
     }
 
-    &:last-child {
+    p {
+      font-weight: normal;
       cursor: pointer;
 
       display: flex;
@@ -56,7 +64,7 @@ export const Header = styled.div`
       }
 
       &:hover {
-        font-weight: 700;
+        filter: brightness(0.9);
       }
     }
   }

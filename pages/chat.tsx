@@ -120,7 +120,10 @@ export default function ChatPage() {
         <ChatWrapper>
           <Header>
             <p>Bate-papo</p>
-            <p onClick={handleLogout}>Sair <HiOutlineLogout /></p>
+            <div>
+              <img src={userImageUrl} alt={username} />
+              <p onClick={handleLogout}>Sair <HiOutlineLogout /></p>
+            </div>
           </Header>
 
           <Chat>
