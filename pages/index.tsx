@@ -62,14 +62,7 @@ export default function Home() {
                   onChange={({ target }) => setUserInput(target.value)}
                   readOnly={userImageUrl ? true : false}
                 />
-                {userImageUrl ? (
-                  <button 
-                    className='enter_button'
-                    onClick={navigateToChatPage}
-                  >
-                    Entrar
-                  </button>
-                ) : (
+                {!userImageUrl && (
                   <button 
                     type="submit"
                     className='search_button'
@@ -79,6 +72,15 @@ export default function Home() {
                   </button>
                 )}
               </form>
+              {userImageUrl && (
+                <button 
+                  type="button"
+                  className='enter_button'
+                  onClick={navigateToChatPage}
+                >
+                  Entrar
+                </button>
+              )}
             </section>
           </Auth>
 

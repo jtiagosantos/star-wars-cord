@@ -46,6 +46,38 @@ export const Auth = styled.div`
   }
 
   section {
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 0;
+      
+      font-size: 0.875rem;
+      font-weight: 700;
+
+      transition: filter 0.2s;
+
+      &:hover {
+        filter: brightness(0.9);
+      }
+
+      &.search_button {
+        background: #d8f500;
+        color: #141414;
+
+        &:disabled {
+          cursor: not-allowed;
+        }
+      }
+
+      &.enter_button {
+        background: #3F9142;
+        color: #ffffff;
+        margin-top: 10px;
+      }
+    }
+
     form {
       display: flex;
       flex-direction: column;
@@ -66,35 +98,6 @@ export const Auth = styled.div`
         padding: 4px;
 
         color: #ffffff;
-      }
-
-      button {
-        border: none;
-        border-radius: 4px;
-        padding: 10px 0;
-        
-        font-size: 0.875rem;
-        font-weight: 700;
-
-        transition: filter 0.2s;
-
-        &:hover {
-          filter: brightness(0.9);
-        }
-
-        &.search_button {
-          background: #d8f500;
-          color: #141414;
-
-          &:disabled {
-            cursor: not-allowed;
-          }
-        }
-
-        &.enter_button {
-          background: #3F9142;
-          color: #ffffff;
-        }
       }
     }
   }
