@@ -8,7 +8,7 @@ import { useCustomToast } from '../src/hooks/useCustomToast';
 import { 
   getGithubUserService, 
   GithubUser,
-} from '../src/services/get-github-user';
+} from '../src/services/github/get-github-user';
 import { useGithubUser } from '../src/hooks/useGithubUser';
 
 import { Main, ProfileCard, Auth, PhotoProfile } from '../src/styles/home-styles';
