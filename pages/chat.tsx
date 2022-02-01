@@ -39,6 +39,12 @@ export default function ChatPage() {
   const { isLoading, isError, error, data } = useQuery('messages', getMessagesService);
 
   useEffect(() => {
+    if (!username) {
+      router.push('/401');
+      
+      return
+    }
+    
     if (isError) {
       console.log('Return error in get messages: ' + error);
 
