@@ -7,8 +7,8 @@ interface ButtonProps {
 }
 
 export const Button = styled.button<ButtonProps>`
-  min-width: 47px;
-  height: 45px;
+  min-width: 45px;
+  min-height: 45px;
   border-radius: 100%;
   border: none;
   background: ${(props) => props.backgroundColor};
