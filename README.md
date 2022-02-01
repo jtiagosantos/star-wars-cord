@@ -22,7 +22,7 @@
   <a href="#-technologies">Technologies</a> •
   <a href="#-deploy">Deploy</a> •
   <a href="#-author">Author</a> •
-  <a href="#-license">License</a>
+  <a href="#-license">License</a> •
 </p>
 
 <br>
