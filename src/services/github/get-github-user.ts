@@ -1,6 +1,4 @@
-export interface GithubUser {
-  userImageUrl: string;
-}
+import { GithubUser } from "../../types/github-user";
 
 export async function getGithubUserService(username: string) {
   if (!username) {

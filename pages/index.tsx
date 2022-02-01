@@ -5,13 +5,11 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useMutation } from 'react-query';
 import { useCustomToast } from '../src/hooks/useCustomToast';
-import { 
-  getGithubUserService, 
-  GithubUser,
-} from '../src/services/github/get-github-user';
+import { getGithubUserService } from '../src/services/github/get-github-user';
 import { useGithubUser } from '../src/hooks/useGithubUser';
 
 import { Main, ProfileCard, Auth, PhotoProfile } from '../src/styles/home-styles';
+import { GithubUser } from '../src/types/github-user';
 
 export default function Home() {
   const [userInput, setUserInput] = useState('');
