@@ -22,6 +22,7 @@ export const MessageContainer = styled.div`
     .message_text {
       color: #ffffff;
       font-size: 1rem;
+      margin-top: 10px;
     }
 
     .message_sticker {
@@ -35,8 +36,6 @@ export const MessageInfo = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-
-  margin-bottom: 10px;
 
   img {
     width: 25px;

@@ -14,6 +14,7 @@ export async function getGithubUserService(username: string) {
     }
 
     const githubUser: GithubUser = {
+      userId: data.id,
       userImageUrl: `https://github.com/${username}.png`,
     }
 

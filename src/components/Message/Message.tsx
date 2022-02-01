@@ -1,8 +1,11 @@
 import { RiDeleteBin2Fill } from 'react-icons/ri'
+import { useGithubUser } from '../../hooks/useGithubUser';
+
 import { MessageContainer, MessageInfo } from "./styles";
 
 export interface MessageProps {
   username: string;
+  userId: number;
   userImageUrl: string;
   message: string;
   deleteMessage: () => void;
@@ -11,11 +14,14 @@ export interface MessageProps {
 
 export function Message({ 
   username, 
+  userId,
   userImageUrl, 
   message, 
   deleteMessage,
   createdAt,
 }: MessageProps) {
+  const { userId: githubUserId } = useGithubUser();
+
   return (
     <MessageContainer>
       <div>
@@ -34,7 +40,9 @@ export function Message({
           :
           <p className='message_text'>{message}</p>}
       </div>
-      <RiDeleteBin2Fill onClick={deleteMessage} />
+      <div>
+        {userId === githubUserId && <RiDeleteBin2Fill onClick={deleteMessage} />}
+      </div>
     </MessageContainer>
   );
 }

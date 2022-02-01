@@ -16,7 +16,7 @@ export default function Home() {
 
   const router = useRouter();
   const { errorToast, successToast } = useCustomToast();
-  const { setUsername, userImageUrl, setUserImageUrl } = useGithubUser();
+  const { setUsername, setUserId, userImageUrl, setUserImageUrl } = useGithubUser();
 
   const { 
     isLoading, 
@@ -24,6 +24,7 @@ export default function Home() {
   } = useMutation<GithubUser, unknown, string, unknown>(getGithubUserService, {
     onSuccess: (user) => {
       setUsername(userInput)
+      setUserId(user.userId);
       setUserImageUrl(user.userImageUrl);
       
       successToast('Usuário encontrado.');

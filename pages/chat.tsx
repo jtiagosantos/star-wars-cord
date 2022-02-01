@@ -34,7 +34,13 @@ export default function ChatPage() {
   const router = useRouter();
 
   const { errorToast, promiseToast } = useCustomToast();
-  const { username, userImageUrl, setUsername, setUserImageUrl } = useGithubUser();
+  const { 
+    username, 
+    userId, 
+    userImageUrl, 
+    setUsername, 
+    setUserImageUrl 
+  } = useGithubUser();
 
   const { isLoading, isError, error, data } = useQuery('messages', getMessagesService);
 
@@ -68,6 +74,7 @@ export default function ChatPage() {
 
   function sendMessage(stickerUrl: string) {
     const message = {
+      user_id: userId,
       username,
       user_image_url: userImageUrl,
       message: stickerUrl ? `:sticker:${stickerUrl}` : messageInput,
@@ -137,6 +144,7 @@ export default function ChatPage() {
               <Message
                 key={message.id}
                 username={message.username}
+                userId={message.user_id}
                 message={message.message}
                 userImageUrl={message.user_image_url}
                 deleteMessage={() => handleDeleteMessage(message.id)}
